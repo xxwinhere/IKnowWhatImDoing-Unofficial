@@ -2,6 +2,8 @@ pluginManagement {
   repositories {
     gradlePluginPortal()
     maven("https://files.minecraftforge.net/maven")
+    maven("https://maven.aliyun.com/repository/central")
+    maven("https://repo1.maven.org/maven2")
   }
 
   resolutionStrategy {

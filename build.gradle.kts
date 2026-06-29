@@ -2,7 +2,7 @@ import java.time.Instant
 import net.minecraftforge.gradle.common.tasks.SignJar
 
 plugins {
-  id("net.minecraftforge.gradle") version "5.1.64"
+  id("net.minecraftforge.gradle") version "6.0.24"
   id("net.nemerosa.versioning") version "3.0.0"
   id("org.gradle.signing")
 }
@@ -15,7 +15,7 @@ java {
 }
 
 minecraft {
-  mappings("official", "1.19.3")
+  mappings("official", "1.20.1")
   runs {
     listOf("client", "server").forEach {
       create(it) {
@@ -28,7 +28,7 @@ minecraft {
 }
 
 dependencies {
-  minecraft("net.minecraftforge:forge:1.19.3-44.1.5")
+  minecraft("net.minecraftforge:forge:1.20.1-47.2.0")
   implementation("org.checkerframework:checker-qual:3.29.0")
 }
 
@@ -57,7 +57,7 @@ tasks {
 
     manifest.attributes(
       "Build-Timestamp" to Instant.now(),
-      "Build-Revision" to versioning.info.commit,
+      "Build-Revision" to (try { versioning.info.commit } catch (e: Exception) { "unknown" }),
       "Build-Jvm" to "${
         System.getProperty("java.version")
       } (${
